@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,14 +28,14 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code&display=swap');
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0F172A;
             color: #E2E8F0;
             scroll-behavior: smooth;
         }
-        
+
         .code-window {
             background: #1E293B;
             border-radius: 8px;
@@ -51,10 +52,23 @@
             border-bottom: 1px solid #334155;
         }
 
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .red { background: #EF4444; }
-        .yellow { background: #F59E0B; }
-        .green { background: #10B981; }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #EF4444;
+        }
+
+        .yellow {
+            background: #F59E0B;
+        }
+
+        .green {
+            background: #10B981;
+        }
 
         .glow-text {
             background: linear-gradient(to right, #60A5FA, #A78BFA);
@@ -65,6 +79,7 @@
         .asset-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .asset-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.2);
@@ -72,6 +87,7 @@
         }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- NAVIGASYON -->
@@ -84,13 +100,17 @@
             <div class="flex items-center gap-6">
                 <!-- Dil Seçici -->
                 <div class="flex text-sm font-semibold text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
-                    <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 bg-blue-600 text-white transition">EN</button>
-                    <button onclick="setLanguage('tr')" id="btn-tr" class="px-3 py-1 hover:bg-gray-700 transition">TR</button>
+                    <button onclick="setLanguage('en')" id="btn-en"
+                        class="px-3 py-1 bg-blue-600 text-white transition">EN</button>
+                    <button onclick="setLanguage('tr')" id="btn-tr"
+                        class="px-3 py-1 hover:bg-gray-700 transition">TR</button>
                 </div>
 
                 <div class="hidden md:flex gap-6">
-                    <a href="#my-assets" class="text-sm font-medium text-gray-300 hover:text-white transition" data-i18n="nav_assets">My Assets</a>
-                    <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-white transition" data-i18n="nav_contact">Contact</a>
+                    <a href="#my-assets" class="text-sm font-medium text-gray-300 hover:text-white transition"
+                        data-i18n="nav_assets">My Assets</a>
+                    <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-white transition"
+                        data-i18n="nav_contact">Contact</a>
                 </div>
             </div>
         </div>
@@ -99,10 +119,13 @@
     <!-- HERO BÖLÜMÜ -->
     <header class="pt-32 pb-20 px-4 relative overflow-hidden">
         <!-- Arkaplan efekti -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none"></div>
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none">
+        </div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-900/30 rounded-full border border-blue-800">
+            <div
+                class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-900/30 rounded-full border border-blue-800">
                 Unity & Unreal Tools
             </div>
             <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
@@ -110,13 +133,16 @@
                 <span class="glow-text" data-i18n="hero_title_2">Game Development</span>
             </h1>
             <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed" data-i18n="hero_desc">
-                High-performance code assets designed to save you time. Modular, optimized, and easy to integrate into any project.
+                High-performance code assets designed to save you time. Modular, optimized, and easy to integrate into
+                any project.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#my-assets" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25">
+                <a href="#my-assets"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25">
                     <i class="fa-solid fa-layer-group"></i> <span data-i18n="hero_btn_explore">Explore Assets</span>
                 </a>
-                <a href="#features" class="px-8 py-3 rounded-lg font-medium border border-gray-700 hover:bg-gray-800 transition text-gray-300">
+                <a href="#features"
+                    class="px-8 py-3 rounded-lg font-medium border border-gray-700 hover:bg-gray-800 transition text-gray-300">
                     <span data-i18n="hero_btn_features">Why Us?</span>
                 </a>
             </div>
@@ -143,37 +169,43 @@
     <!-- ÖZELLİKLER -->
     <section id="features" class="py-20 bg-dark">
         <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-            
+
             <div class="space-y-8">
                 <h2 class="text-3xl font-bold mb-4" data-i18n="feat_main_title">Why Choose These Tools?</h2>
-                
+
                 <div class="flex gap-4">
-                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-400 shrink-0">
+                    <div
+                        class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-400 shrink-0">
                         <i class="fa-solid fa-bolt text-xl"></i>
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold mb-1" data-i18n="feat_1_title">High Performance</h3>
-                        <p class="text-gray-400" data-i18n="feat_1_desc">Optimized C# code ensuring 60+ FPS even on mobile devices.</p>
+                        <p class="text-gray-400" data-i18n="feat_1_desc">Optimized C# code ensuring 60+ FPS even on
+                            mobile devices.</p>
                     </div>
                 </div>
 
                 <div class="flex gap-4">
-                    <div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center text-purple-400 shrink-0">
+                    <div
+                        class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center text-purple-400 shrink-0">
                         <i class="fa-solid fa-code text-xl"></i>
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold mb-1" data-i18n="feat_2_title">Easy Integration</h3>
-                        <p class="text-gray-400" data-i18n="feat_2_desc">Plug and play. Add professional features to your game with a single line of code.</p>
+                        <p class="text-gray-400" data-i18n="feat_2_desc">Plug and play. Add professional features to
+                            your game with a single line of code.</p>
                     </div>
                 </div>
 
                 <div class="flex gap-4">
-                    <div class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center text-green-400 shrink-0">
+                    <div
+                        class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center text-green-400 shrink-0">
                         <i class="fa-solid fa-book text-xl"></i>
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold mb-1" data-i18n="feat_3_title">Full Documentation</h3>
-                        <p class="text-gray-400" data-i18n="feat_3_desc">Detailed PDF guides and commented code to help you understand everything.</p>
+                        <p class="text-gray-400" data-i18n="feat_3_desc">Detailed PDF guides and commented code to help
+                            you understand everything.</p>
                     </div>
                 </div>
             </div>
@@ -190,14 +222,17 @@
                     <div class="text-gray-400" data-i18n="code_comment_1">// Easy to use API</div>
                     <div><span class="text-purple-400">void</span> <span class="text-yellow-400">Start</span>() {</div>
                     <div class="pl-4">
-                        <span class="text-blue-400">BextapSystem</span>.<span class="text-yellow-400">Initialize</span>();
+                        <span class="text-blue-400">BextapSystem</span>.<span
+                            class="text-yellow-400">Initialize</span>();
                     </div>
                     <br>
                     <div class="pl-4">
-                        <span class="text-purple-400">var</span> player = <span class="text-blue-400">Manager</span>.<span class="text-yellow-400">GetPlayer</span>();
+                        <span class="text-purple-400">var</span> player = <span
+                            class="text-blue-400">Manager</span>.<span class="text-yellow-400">GetPlayer</span>();
                     </div>
                     <div class="pl-4">
-                        <span class="text-blue-400">Debug</span>.<span class="text-yellow-400">Log</span>(<span class="text-green-400">"Ready!"</span>);
+                        <span class="text-blue-400">Debug</span>.<span class="text-yellow-400">Log</span>(<span
+                            class="text-green-400">"Ready!"</span>);
                     </div>
                     <div>}</div>
                 </div>
@@ -213,14 +248,15 @@
             <p class="text-gray-400 mb-6" data-i18n="contact_desc">
                 Have questions, bug reports, or feature requests? Feel free to reach out.
             </p>
-            
-            <a href="mailto:contact@email.com" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition text-lg font-medium">
+
+            <a href="mailto:contact@email.com"
+                class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition text-lg font-medium">
                 <i class="fa-regular fa-envelope"></i>
-                seninmailin@gmail.com
+                tunckalberke@gmail.com
             </a>
 
             <div class="mt-12 text-sm text-gray-600">
-                <p>&copy; 2024 Bextap Assets. All rights reserved.</p>
+                <p>&copy; 2026 Bextap Assets. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -236,25 +272,10 @@
                 desc_tr: "Unity içinde yüksek performanslı, etkileşimli ve özelleştirilebilir **2D Strateji Haritaları** (Grand Strategy / Risk benzeri) oluşturmanızı sağlar.",
                 tags: ["Code", "Map"],
                 link: "#", // Buraya Asset Store linkini yapıştır
-                
-                // DEĞİŞİKLİK BURADA:
-                // İnternet linki yerine klasör yolunu yazıyoruz.
+
                 // GitHub'da "images" diye klasör açıp içine "map_preview.png" atarsan kod şöyle olur:
-                image: "./images/map_preview.png" 
-                
-                // Eğer henüz resim yüklemediysen eski placeholder dursun diye bunu yorum satırı yaptım, 
-                // resim yükleyince üsttekini kullanabilirsin:
-                // image: "https://placehold.co/600x400/1e293b/FFF?text=Map+Preview"
+                image: "./images/unitymapgenerator.png"
             },
-            {
-                // ÖRNEK 2. ASSET (Bunu çoğaltabilirsin)
-                title: "Mobile Input System",
-                desc_en: "Easy to use mobile joystick and touch controls.",
-                desc_tr: "Kullanımı kolay mobil joystick ve dokunmatik kontroller.",
-                tags: ["Mobile", "Input"],
-                link: "#",
-                image: "./images/mobile_input.png" // Resim dosyanın adı neyse onu yazmalısın
-            }
         ];
 
         // --- DİL ÇEVİRİLERİ ---
@@ -338,11 +359,11 @@
 
         function setLanguage(lang) {
             currentLang = lang;
-            
+
             // Buton stillerini güncelle
             const btnEn = document.getElementById('btn-en');
             const btnTr = document.getElementById('btn-tr');
-            
+
             if (lang === 'en') {
                 btnEn.className = "px-3 py-1 bg-blue-600 text-white transition";
                 btnTr.className = "px-3 py-1 hover:bg-gray-700 transition";
@@ -364,10 +385,11 @@
         }
 
         // Sayfa yüklendiğinde çalıştır
-        window.onload = function() {
+        window.onload = function () {
             setLanguage('en'); // Default language
         };
 
     </script>
 </body>
+
 </html>
