@@ -3,172 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unity Map Generator - Strateji Oyunları İçin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --primary: #3b82f6;
-            --accent: #10b981;
-            --text-main: #f8fafc;
-            --text-secondary: #94a3b8;
+    <title>Bextap Assets - High Quality Unity Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        unity: '#808080',
+                        accent: '#2563EB', // Mavi tonu
+                        dark: '#0F172A',
+                        darker: '#020617'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
         }
-
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code&display=swap');
+        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            line-height: 1.6;
+            background-color: #0F172A;
+            color: #E2E8F0;
+        }
+        
+        .code-window {
+            background: #1E293B;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
+            overflow: hidden;
         }
 
-        /* Header / Hero */
-        header {
-            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1)), url('Screenshots/hero_bg.png');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 20px;
-            text-align: center;
+        .code-header {
+            background: #0F172A;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
             border-bottom: 1px solid #334155;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #60a5fa, #34d399);
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #EF4444; }
+        .yellow { background: #F59E0B; }
+        .green { background: #10B981; }
+
+        .glow-text {
+            background: linear-gradient(to right, #60A5FA, #A78BFA);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        p.lead {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .btn:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-        }
-
-        /* Features */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .card h3 {
-            color: var(--accent);
-            margin-top: 0;
-            font-size: 1.5rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-        }
-
-        /* Showcase */
-        .showcase {
-            background-color: #111827;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .showcase img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-            margin-top: 30px;
-            border: 1px solid #374151;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-secondary);
-            border-top: 1px solid #334155;
-            font-size: 0.9rem;
-        }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <header>
-        <h1>Unity Map Generator</h1>
-        <p class="lead">Grand Strategy oyunları için tasarlanmış, performansı yüksek ve tamamen özelleştirilebilir 2D harita oluşturucu.</p>
-        <a href="https://github.com/KULLANICI_ADI/REPO_ADI" class="btn">GitHub'da Görüntüle</a>
-    </header>
-
-    <div class="container">
-        <h2 style="text-align: center;">Neden Bu Asset?</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>🚀 Tek Tıkla Kurulum</h3>
-                <p>Standart GeoJSON dosyalarını sürükleyip bırakın. Karmaşık ayarlar yok, editör penceresinden anında bake alın.</p>
+    <!-- NAVIGASYON -->
+    <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-cube text-blue-500 text-xl"></i>
+                <span class="font-bold text-xl tracking-tight">Bextap Assets</span>
             </div>
-            <div class="card">
-                <h3>⚡ Yüksek Performans</h3>
-                <p>Mesh Simplification (Douglas-Peucker) ve Ear Clipping algoritmaları ile optimize edilmiş haritalar üretir.</p>
-            </div>
-            <div class="card">
-                <h3>🎨 Tam Kontrol</h3>
-                <p>Sınır renkleri, kalınlıkları ve dinamik etiketler (TextMeshPro) tamamen runtime'da özelleştirilebilir.</p>
-            </div>
-            <div class="card">
-                <h3>📦 Bağımlılıksız</h3>
-                <p>Newtonsoft veya harici DLL gerektirmez. Projenize import edin ve hemen kullanmaya başlayın.</p>
+            <div>
+                <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-white transition mr-4">İletişim</a>
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-semibold transition shadow-lg shadow-blue-500/20">
+                    Asset Store
+                </a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <section class="showcase">
-        <div class="container">
-            <h2>Örnek Görüntüler</h2>
-            <p style="color: var(--text-secondary)">Gerçek dünya haritası üzerinde test edilmiştir.</p>
-            <!-- GÖRSEL YER TUTUCU: Buraya kendi ekran görüntünüzü koyun -->
-            <img src="Screenshots/ingame_map.png" alt="Oyun İçi Görüntü" style="max-height: 600px;">
+    <!-- HERO BÖLÜMÜ (Ana Başlık) -->
+    <header class="pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-900/30 rounded-full border border-blue-800">
+                Unity için Geliştirildi
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Oyun Geliştirme Sürecinizi <br>
+                <span class="glow-text">Hızlandırın</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
+                Bu asset, karmaşık kod yapılarıyla uğraşmadan projenize profesyonel özellikler eklemenizi sağlar. Performanslı, modüler ve kullanımı kolay.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="bg-white text-darker px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-unity"></i> Asset Store'dan Al
+                </a>
+                <a href="#features" class="px-8 py-3 rounded-lg font-medium border border-gray-700 hover:bg-gray-800 transition text-gray-300">
+                    Özellikleri İncele
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- KOD GÖRSELİ VE ÖZELLİKLER -->
+    <section id="features" class="py-20 bg-darker">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Sol Taraf: Özellik Listesi -->
+            <div class="space-y-8">
+                <h2 class="text-3xl font-bold mb-4">Neden Bu Asset?</h2>
+                
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-400 shrink-0">
+                        <i class="fa-solid fa-bolt text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-1">Yüksek Performans</h3>
+                        <p class="text-gray-400">Optimize edilmiş C# kodu sayesinde mobil cihazlarda bile 60 FPS garantili çalışma mantığı.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center text-purple-400 shrink-0">
+                        <i class="fa-solid fa-code text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-1">Kolay Entegrasyon</h3>
+                        <p class="text-gray-400">Sadece tek satır kod ile projenize dahil edin. Karmaşık kurulum gerektirmez.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center text-green-400 shrink-0">
+                        <i class="fa-solid fa-book text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-1">Tam Dokümantasyon</h3>
+                        <p class="text-gray-400">Her metot ve sınıf detaylıca açıklanmıştır. PDF rehberi dahildir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sağ Taraf: Kod Penceresi (Görsel) -->
+            <div class="code-window transform rotate-1 hover:rotate-0 transition duration-500">
+                <div class="code-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <span class="text-xs text-gray-500 ml-2 font-mono">GameManager.cs</span>
+                </div>
+                <div class="p-6 font-mono text-sm leading-relaxed overflow-x-auto">
+                    <div class="text-gray-400">// Kolay kullanım örneği</div>
+                    <div><span class="text-purple-400">void</span> <span class="text-yellow-400">Start</span>() {</div>
+                    <div class="pl-4">
+                        <span class="text-gray-500">// Asset'i başlat</span>
+                    </div>
+                    <div class="pl-4">
+                        <span class="text-blue-400">BextapSystem</span>.<span class="text-yellow-400">Initialize</span>();
+                    </div>
+                    <br>
+                    <div class="pl-4">
+                        <span class="text-gray-500">// Özelliği aktif et</span>
+                    </div>
+                    <div class="pl-4">
+                        <span class="text-purple-400">var</span> result = <span class="text-blue-400">Manager</span>.<span class="text-yellow-400">Execute</span>(<span class="text-green-400">"Player_1"</span>);
+                    </div>
+                    <div class="pl-4">
+                        <span class="text-blue-400">Debug</span>.<span class="text-yellow-400">Log</span>(<span class="text-green-400">"Sistem Hazır!"</span>);
+                    </div>
+                    <div>}</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <footer>
-        <p>Unity Map Generator Asset - Open Source Project</p>
-        <p>&copy; 2024</p>
+    <!-- İLETİŞİM / FOOTER -->
+    <footer id="contact" class="py-12 border-t border-gray-800 bg-dark">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">Destek & İletişim</h2>
+            <p class="text-gray-400 mb-6">
+                Sorularınız, bug bildirimleri veya özellik istekleri için bana ulaşabilirsiniz.
+            </p>
+            
+            <a href="mailto:contact@email.com" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition text-lg font-medium">
+                <i class="fa-regular fa-envelope"></i>
+                seninmailin@gmail.com
+            </a>
+
+            <div class="mt-12 text-sm text-gray-600">
+                <p>&copy; 2024 Bextap Assets. Tüm hakları saklıdır.</p>
+                <p class="mt-2">Bu site Unity Asset Store yayıncı gereksinimleri için oluşturulmuştur.</p>
+            </div>
+        </div>
     </footer>
 
 </body>
