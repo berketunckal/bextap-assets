@@ -231,28 +231,29 @@
         // Yeni asset eklemek için aşağıdaki listeyi kopyalayıp çoğaltabilirsin.
         const assets = [
             {
-                title: "Ultimate Save System",
-                desc_en: "A robust JSON based save system handling encryption and multiple slots.",
-                desc_tr: "Şifreleme ve çoklu slot desteği sunan, JSON tabanlı güçlü kayıt sistemi.",
-                tags: ["Code", "System"],
+                title: "2D World Generator",
+                desc_en: "Enables you to create high-performance, interactive, and customizable **2D Strategy Maps** (Grand Strategy / Risk-like) within Unity.",
+                desc_tr: "Unity içinde yüksek performanslı, etkileşimli ve özelleştirilebilir **2D Strateji Haritaları** (Grand Strategy / Risk benzeri) oluşturmanızı sağlar.",
+                tags: ["Code", "Map"],
                 link: "#", // Buraya Asset Store linkini yapıştır
-                image: "https://placehold.co/600x400/1e293b/FFF?text=Save+System"
+                
+                // DEĞİŞİKLİK BURADA:
+                // İnternet linki yerine klasör yolunu yazıyoruz.
+                // GitHub'da "images" diye klasör açıp içine "map_preview.png" atarsan kod şöyle olur:
+                image: "./images/map_preview.png" 
+                
+                // Eğer henüz resim yüklemediysen eski placeholder dursun diye bunu yorum satırı yaptım, 
+                // resim yükleyince üsttekini kullanabilirsin:
+                // image: "https://placehold.co/600x400/1e293b/FFF?text=Map+Preview"
             },
             {
-                title: "Mobile Input Controller",
-                desc_en: "Touch gestures, joystick and button inputs ready for mobile games.",
-                desc_tr: "Mobil oyunlar için hazır dokunmatik hareketler, joystick ve buton kontrolleri.",
+                // ÖRNEK 2. ASSET (Bunu çoğaltabilirsin)
+                title: "Mobile Input System",
+                desc_en: "Easy to use mobile joystick and touch controls.",
+                desc_tr: "Kullanımı kolay mobil joystick ve dokunmatik kontroller.",
                 tags: ["Mobile", "Input"],
                 link: "#",
-                image: "https://placehold.co/600x400/1e293b/FFF?text=Mobile+Input"
-            },
-            {
-                title: "2D Physics Essentials",
-                desc_en: "Collection of essential physics scripts for platformer games.",
-                desc_tr: "Platform oyunları için gerekli temel fizik kodları koleksiyonu.",
-                tags: ["2D", "Physics"],
-                link: "#",
-                image: "https://placehold.co/600x400/1e293b/FFF?text=2D+Physics"
+                image: "./images/mobile_input.png" // Resim dosyanın adı neyse onu yazmalısın
             }
         ];
 
