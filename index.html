@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Map Generator - Strateji Oyunları İçin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #3b82f6;
+            --accent: #10b981;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Header / Hero */
+        header {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1)), url('Screenshots/hero_bg.png');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* Features */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+        }
+
+        /* Showcase */
+        .showcase {
+            background-color: #111827;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .showcase img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            margin-top: 30px;
+            border: 1px solid #374151;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Unity Map Generator</h1>
+        <p class="lead">Grand Strategy oyunları için tasarlanmış, performansı yüksek ve tamamen özelleştirilebilir 2D harita oluşturucu.</p>
+        <a href="https://github.com/KULLANICI_ADI/REPO_ADI" class="btn">GitHub'da Görüntüle</a>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align: center;">Neden Bu Asset?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🚀 Tek Tıkla Kurulum</h3>
+                <p>Standart GeoJSON dosyalarını sürükleyip bırakın. Karmaşık ayarlar yok, editör penceresinden anında bake alın.</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Yüksek Performans</h3>
+                <p>Mesh Simplification (Douglas-Peucker) ve Ear Clipping algoritmaları ile optimize edilmiş haritalar üretir.</p>
+            </div>
+            <div class="card">
+                <h3>🎨 Tam Kontrol</h3>
+                <p>Sınır renkleri, kalınlıkları ve dinamik etiketler (TextMeshPro) tamamen runtime'da özelleştirilebilir.</p>
+            </div>
+            <div class="card">
+                <h3>📦 Bağımlılıksız</h3>
+                <p>Newtonsoft veya harici DLL gerektirmez. Projenize import edin ve hemen kullanmaya başlayın.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="showcase">
+        <div class="container">
+            <h2>Örnek Görüntüler</h2>
+            <p style="color: var(--text-secondary)">Gerçek dünya haritası üzerinde test edilmiştir.</p>
+            <!-- GÖRSEL YER TUTUCU: Buraya kendi ekran görüntünüzü koyun -->
+            <img src="Screenshots/ingame_map.png" alt="Oyun İçi Görüntü" style="max-height: 600px;">
+        </div>
+    </section>
+
+    <footer>
+        <p>Unity Map Generator Asset - Open Source Project</p>
+        <p>&copy; 2024</p>
+    </footer>
+
+</body>
+</html>
