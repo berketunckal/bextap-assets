@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +12,10 @@
                 extend: {
                     colors: {
                         unity: '#808080',
-                        accent: '#2563EB', // Mavi tonu
+                        accent: '#2563EB',
                         dark: '#0F172A',
-                        darker: '#020617'
+                        darker: '#020617',
+                        card: '#1E293B'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -31,6 +32,7 @@
             font-family: 'Inter', sans-serif;
             background-color: #0F172A;
             color: #E2E8F0;
+            scroll-behavior: smooth;
         }
         
         .code-window {
@@ -59,65 +61,99 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .asset-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .asset-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.2);
+            border-color: #3B82F6;
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- NAVIGASYON -->
-    <nav class="fixed w-full z-50 bg-dark/80 backdrop-blur-md border-b border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <nav class="fixed w-full z-50 bg-dark/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <i class="fa-solid fa-cube text-blue-500 text-xl"></i>
                 <span class="font-bold text-xl tracking-tight">Bextap Assets</span>
             </div>
-            <div>
-                <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-white transition mr-4">İletişim</a>
-                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-semibold transition shadow-lg shadow-blue-500/20">
-                    Asset Store
-                </a>
+            <div class="flex items-center gap-6">
+                <!-- Dil Seçici -->
+                <div class="flex text-sm font-semibold text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+                    <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 bg-blue-600 text-white transition">EN</button>
+                    <button onclick="setLanguage('tr')" id="btn-tr" class="px-3 py-1 hover:bg-gray-700 transition">TR</button>
+                </div>
+
+                <div class="hidden md:flex gap-6">
+                    <a href="#my-assets" class="text-sm font-medium text-gray-300 hover:text-white transition" data-i18n="nav_assets">My Assets</a>
+                    <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-white transition" data-i18n="nav_contact">Contact</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- HERO BÖLÜMÜ (Ana Başlık) -->
-    <header class="pt-32 pb-20 px-4">
-        <div class="max-w-4xl mx-auto text-center">
+    <!-- HERO BÖLÜMÜ -->
+    <header class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <!-- Arkaplan efekti -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
             <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-900/30 rounded-full border border-blue-800">
-                Unity için Geliştirildi
+                Unity & Unreal Tools
             </div>
             <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Oyun Geliştirme Sürecinizi <br>
-                <span class="glow-text">Hızlandırın</span>
+                <span data-i18n="hero_title_1">Accelerate Your</span> <br>
+                <span class="glow-text" data-i18n="hero_title_2">Game Development</span>
             </h1>
-            <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
-                Bu asset, karmaşık kod yapılarıyla uğraşmadan projenize profesyonel özellikler eklemenizi sağlar. Performanslı, modüler ve kullanımı kolay.
+            <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed" data-i18n="hero_desc">
+                High-performance code assets designed to save you time. Modular, optimized, and easy to integrate into any project.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#" class="bg-white text-darker px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-unity"></i> Asset Store'dan Al
+                <a href="#my-assets" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25">
+                    <i class="fa-solid fa-layer-group"></i> <span data-i18n="hero_btn_explore">Explore Assets</span>
                 </a>
                 <a href="#features" class="px-8 py-3 rounded-lg font-medium border border-gray-700 hover:bg-gray-800 transition text-gray-300">
-                    Özellikleri İncele
+                    <span data-i18n="hero_btn_features">Why Us?</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- KOD GÖRSELİ VE ÖZELLİKLER -->
-    <section id="features" class="py-20 bg-darker">
+    <!-- ASSET VİTRİNİ (YENİ BÖLÜM) -->
+    <section id="my-assets" class="py-20 bg-darker border-t border-gray-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4" data-i18n="portfolio_title">My Assets</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-i18n="portfolio_desc">
+                    Check out my latest tools and systems available on the store.
+                </p>
+            </div>
+
+            <!-- Asset Kartları Container (JS ile doldurulacak) -->
+            <div id="assets-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javascript burayı dolduracak -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖZELLİKLER -->
+    <section id="features" class="py-20 bg-dark">
         <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
             
-            <!-- Sol Taraf: Özellik Listesi -->
             <div class="space-y-8">
-                <h2 class="text-3xl font-bold mb-4">Neden Bu Asset?</h2>
+                <h2 class="text-3xl font-bold mb-4" data-i18n="feat_main_title">Why Choose These Tools?</h2>
                 
                 <div class="flex gap-4">
                     <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-400 shrink-0">
                         <i class="fa-solid fa-bolt text-xl"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold mb-1">Yüksek Performans</h3>
-                        <p class="text-gray-400">Optimize edilmiş C# kodu sayesinde mobil cihazlarda bile 60 FPS garantili çalışma mantığı.</p>
+                        <h3 class="text-xl font-semibold mb-1" data-i18n="feat_1_title">High Performance</h3>
+                        <p class="text-gray-400" data-i18n="feat_1_desc">Optimized C# code ensuring 60+ FPS even on mobile devices.</p>
                     </div>
                 </div>
 
@@ -126,8 +162,8 @@
                         <i class="fa-solid fa-code text-xl"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold mb-1">Kolay Entegrasyon</h3>
-                        <p class="text-gray-400">Sadece tek satır kod ile projenize dahil edin. Karmaşık kurulum gerektirmez.</p>
+                        <h3 class="text-xl font-semibold mb-1" data-i18n="feat_2_title">Easy Integration</h3>
+                        <p class="text-gray-400" data-i18n="feat_2_desc">Plug and play. Add professional features to your game with a single line of code.</p>
                     </div>
                 </div>
 
@@ -136,38 +172,32 @@
                         <i class="fa-solid fa-book text-xl"></i>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold mb-1">Tam Dokümantasyon</h3>
-                        <p class="text-gray-400">Her metot ve sınıf detaylıca açıklanmıştır. PDF rehberi dahildir.</p>
+                        <h3 class="text-xl font-semibold mb-1" data-i18n="feat_3_title">Full Documentation</h3>
+                        <p class="text-gray-400" data-i18n="feat_3_desc">Detailed PDF guides and commented code to help you understand everything.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Sağ Taraf: Kod Penceresi (Görsel) -->
+            <!-- Kod Görseli -->
             <div class="code-window transform rotate-1 hover:rotate-0 transition duration-500">
                 <div class="code-header">
                     <div class="dot red"></div>
                     <div class="dot yellow"></div>
                     <div class="dot green"></div>
-                    <span class="text-xs text-gray-500 ml-2 font-mono">GameManager.cs</span>
+                    <span class="text-xs text-gray-500 ml-2 font-mono">Example.cs</span>
                 </div>
                 <div class="p-6 font-mono text-sm leading-relaxed overflow-x-auto">
-                    <div class="text-gray-400">// Kolay kullanım örneği</div>
+                    <div class="text-gray-400" data-i18n="code_comment_1">// Easy to use API</div>
                     <div><span class="text-purple-400">void</span> <span class="text-yellow-400">Start</span>() {</div>
-                    <div class="pl-4">
-                        <span class="text-gray-500">// Asset'i başlat</span>
-                    </div>
                     <div class="pl-4">
                         <span class="text-blue-400">BextapSystem</span>.<span class="text-yellow-400">Initialize</span>();
                     </div>
                     <br>
                     <div class="pl-4">
-                        <span class="text-gray-500">// Özelliği aktif et</span>
+                        <span class="text-purple-400">var</span> player = <span class="text-blue-400">Manager</span>.<span class="text-yellow-400">GetPlayer</span>();
                     </div>
                     <div class="pl-4">
-                        <span class="text-purple-400">var</span> result = <span class="text-blue-400">Manager</span>.<span class="text-yellow-400">Execute</span>(<span class="text-green-400">"Player_1"</span>);
-                    </div>
-                    <div class="pl-4">
-                        <span class="text-blue-400">Debug</span>.<span class="text-yellow-400">Log</span>(<span class="text-green-400">"Sistem Hazır!"</span>);
+                        <span class="text-blue-400">Debug</span>.<span class="text-yellow-400">Log</span>(<span class="text-green-400">"Ready!"</span>);
                     </div>
                     <div>}</div>
                 </div>
@@ -177,24 +207,166 @@
     </section>
 
     <!-- İLETİŞİM / FOOTER -->
-    <footer id="contact" class="py-12 border-t border-gray-800 bg-dark">
+    <footer id="contact" class="py-12 border-t border-gray-800 bg-darker">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold mb-4">Destek & İletişim</h2>
-            <p class="text-gray-400 mb-6">
-                Sorularınız, bug bildirimleri veya özellik istekleri için bana ulaşabilirsiniz.
+            <h2 class="text-2xl font-bold mb-4" data-i18n="contact_title">Support & Contact</h2>
+            <p class="text-gray-400 mb-6" data-i18n="contact_desc">
+                Have questions, bug reports, or feature requests? Feel free to reach out.
             </p>
             
             <a href="mailto:contact@email.com" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition text-lg font-medium">
                 <i class="fa-regular fa-envelope"></i>
-                tunckalberke@gmail.com
+                seninmailin@gmail.com
             </a>
 
             <div class="mt-12 text-sm text-gray-600">
-                <p>&copy; 2026 Bextap Assets. Tüm hakları saklıdır.</p>
-                <p class="mt-2">Bu site Unity Asset Store yayıncı gereksinimleri için oluşturulmuştur.</p>
+                <p>&copy; 2024 Bextap Assets. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
+    <script>
+        // --- ASSET LİSTESİ ---
+        // Yeni asset eklemek için aşağıdaki listeyi kopyalayıp çoğaltabilirsin.
+        const assets = [
+            {
+                title: "Ultimate Save System",
+                desc_en: "A robust JSON based save system handling encryption and multiple slots.",
+                desc_tr: "Şifreleme ve çoklu slot desteği sunan, JSON tabanlı güçlü kayıt sistemi.",
+                tags: ["Code", "System"],
+                link: "#", // Buraya Asset Store linkini yapıştır
+                image: "https://placehold.co/600x400/1e293b/FFF?text=Save+System"
+            },
+            {
+                title: "Mobile Input Controller",
+                desc_en: "Touch gestures, joystick and button inputs ready for mobile games.",
+                desc_tr: "Mobil oyunlar için hazır dokunmatik hareketler, joystick ve buton kontrolleri.",
+                tags: ["Mobile", "Input"],
+                link: "#",
+                image: "https://placehold.co/600x400/1e293b/FFF?text=Mobile+Input"
+            },
+            {
+                title: "2D Physics Essentials",
+                desc_en: "Collection of essential physics scripts for platformer games.",
+                desc_tr: "Platform oyunları için gerekli temel fizik kodları koleksiyonu.",
+                tags: ["2D", "Physics"],
+                link: "#",
+                image: "https://placehold.co/600x400/1e293b/FFF?text=2D+Physics"
+            }
+        ];
+
+        // --- DİL ÇEVİRİLERİ ---
+        const translations = {
+            en: {
+                nav_assets: "My Assets",
+                nav_contact: "Contact",
+                hero_title_1: "Accelerate Your",
+                hero_title_2: "Game Development",
+                hero_desc: "High-performance code assets designed to save you time. Modular, optimized, and easy to integrate into any project.",
+                hero_btn_explore: "Explore Assets",
+                hero_btn_features: "Why Us?",
+                portfolio_title: "My Assets",
+                portfolio_desc: "Check out my latest tools and systems available on the store.",
+                feat_main_title: "Why Choose These Tools?",
+                feat_1_title: "High Performance",
+                feat_1_desc: "Optimized C# code ensuring 60+ FPS even on mobile devices.",
+                feat_2_title: "Easy Integration",
+                feat_2_desc: "Plug and play. Add professional features to your game with a single line of code.",
+                feat_3_title: "Full Documentation",
+                feat_3_desc: "Detailed PDF guides and commented code to help you understand everything.",
+                code_comment_1: "// Easy to use API",
+                contact_title: "Support & Contact",
+                contact_desc: "Have questions, bug reports, or feature requests? Feel free to reach out.",
+                btn_view_store: "View in Store"
+            },
+            tr: {
+                nav_assets: "Varlıklarım",
+                nav_contact: "İletişim",
+                hero_title_1: "Oyun Geliştirmeyi",
+                hero_title_2: "Hızlandırın",
+                hero_desc: "Zaman kazanmanız için tasarlanmış yüksek performanslı kod varlıkları. Modüler, optimize ve her projeye kolayca entegre edilebilir.",
+                hero_btn_explore: "Varlıkları İncele",
+                hero_btn_features: "Neden Biz?",
+                portfolio_title: "Varlıklarım",
+                portfolio_desc: "Mağazada bulunan en son araçlarımı ve sistemlerimi inceleyin.",
+                feat_main_title: "Neden Bu Araçlar?",
+                feat_1_title: "Yüksek Performans",
+                feat_1_desc: "Optimize edilmiş C# kodu sayesinde mobil cihazlarda bile 60 FPS garantili.",
+                feat_2_title: "Kolay Entegrasyon",
+                feat_2_desc: "Tak ve çalıştır. Tek satır kod ile oyununuza profesyonel özellikler ekleyin.",
+                feat_3_title: "Tam Dokümantasyon",
+                feat_3_desc: "Her şeyi anlamanıza yardımcı olacak detaylı PDF rehberleri ve yorum satırları.",
+                code_comment_1: "// Kullanımı kolay API",
+                contact_title: "Destek & İletişim",
+                contact_desc: "Sorularınız, hata bildirimleri veya özellik istekleri için bana ulaşabilirsiniz.",
+                btn_view_store: "Mağazada Gör"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function renderAssets() {
+            const container = document.getElementById('assets-container');
+            container.innerHTML = '';
+
+            assets.forEach(asset => {
+                const desc = currentLang === 'en' ? asset.desc_en : asset.desc_tr;
+                const btnText = translations[currentLang].btn_view_store;
+
+                const html = `
+                    <div class="asset-card bg-card rounded-xl border border-gray-800 overflow-hidden flex flex-col h-full group">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="${asset.image}" alt="${asset.title}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div class="absolute top-3 left-3 flex gap-2">
+                                ${asset.tags.map(tag => `<span class="bg-black/60 backdrop-blur-sm text-xs text-white px-2 py-1 rounded border border-white/10">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-2 text-white">${asset.title}</h3>
+                            <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${desc}</p>
+                            <a href="${asset.link}" target="_blank" class="block w-full text-center py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition shadow-lg shadow-blue-500/20">
+                                <i class="fa-brands fa-unity mr-2"></i> ${btnText}
+                            </a>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Buton stillerini güncelle
+            const btnEn = document.getElementById('btn-en');
+            const btnTr = document.getElementById('btn-tr');
+            
+            if (lang === 'en') {
+                btnEn.className = "px-3 py-1 bg-blue-600 text-white transition";
+                btnTr.className = "px-3 py-1 hover:bg-gray-700 transition";
+            } else {
+                btnTr.className = "px-3 py-1 bg-blue-600 text-white transition";
+                btnEn.className = "px-3 py-1 hover:bg-gray-700 transition";
+            }
+
+            // Metinleri güncelle
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Asset kartlarını yeniden oluştur (çünkü açıklamalar değişti)
+            renderAssets();
+        }
+
+        // Sayfa yüklendiğinde çalıştır
+        window.onload = function() {
+            setLanguage('en'); // Default language
+        };
+
+    </script>
 </body>
 </html>
